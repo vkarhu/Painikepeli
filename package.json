@@ -3,5 +3,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
     "heroku-postbuild": "cd painikepeli-frontend && npm install && npm run build"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
 }
