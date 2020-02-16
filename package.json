@@ -1,0 +1,11 @@
+{
+  "name": "painikepeli",
+  "version": "1.0.0",
+  "description": "short multiplayer button game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "heroku-postbuild": "cd nappulapeli-frontend && npm install && npm run build"
+  }
+}
