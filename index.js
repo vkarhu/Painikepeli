@@ -1,8 +1,11 @@
 const express = require('express')
 const cowsay = require('cowsay')
 const cors = require('cors')
+const cookieParser = require('cookie-parser')
+
 // Create the server
 const app = express()
+app.use(cookieParser())
 
 app.use("/count", require('./server/routes/count'))
 
