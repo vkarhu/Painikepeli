@@ -1,12 +1,16 @@
 body {
   margin: 0;
+  height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  background-color: slategrey;
+  background-image: linear-gradient(rgb(23, 94, 94), slategrey);
+  
+  background-repeat: no-repeat;
+  background-attachment: fixed;
  
 }
 
