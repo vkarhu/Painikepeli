@@ -18,17 +18,14 @@ const createId = length => {
 }
 
 router.get('/', (req, res) => {
-    console.log('evästeet: ' + req.headers.cookie)
-    // console.log('evästeet2: '+req.cookies.user)
     let found = false
     if (req.headers.cookie !== undefined) {
         found = req.headers.cookie.includes('user=')
     }
-    console.log('found ' + found)
     if (!found) {
         const newId = createId(10)
         // res.setHeader('Cache-Control', 'private')
-        res.cookie('user', newId, { maxAge: 1000 * 3600 * 24 * 365 })
+        res.cookie('user', newId, { maxAge: 1000 * 3600 * 24 * 365 }) //cookie is valid for a year
         console.log('newId on ' + newId)
         let data = JSON.parse(fs.readFileSync('users'))
         data.push({ user: newId, points: 20 })
@@ -74,7 +71,7 @@ router.get('/push', (req, res) => {
     } else {
         console.log('-1, no user')
     }
-    const toReward = 10 - count % 10 //all rewards are divisible by 10
+    const toReward = 10 - count % 10 // all rewards are divisible by 10
     res.json({
         'count': count,
         'points': data[index].points,
@@ -104,7 +101,6 @@ router.get('/reset', (req, res) => {
     res.json({
         'count': count,
         'points': data[index].points
-        //'toReward': toReward
     })
     res.status(200).end
 })

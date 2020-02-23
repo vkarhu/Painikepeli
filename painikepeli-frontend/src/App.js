@@ -52,16 +52,19 @@ class App extends Component {
   render() {
     return (
       <div>
-        <div>
-          {this.state.count}
-        </div>
+        <h1>
+          Painikepeli
+        </h1>
         {this.state.points>0?<button onClick={this.updateCount}>push</button>:<button onClick={this.resetScore}>Out of points! Reset here</button>}
-        <div>
-          {this.state.points}
-        </div>
-        <div>
-          {this.state.toReward}
-        </div>
+        <h2>
+          You have {this.state.points} points
+        </h2>
+        <h2>
+          Clicks to a reward {this.state.toReward}
+        </h2>
+        <h3>
+          This site relies on cookies. Make sure cookies are turned on before playing!
+        </h3>
       </div>
     )
   }
