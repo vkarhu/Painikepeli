@@ -25,7 +25,7 @@ router.get('/', (req, res) => {
     if (!found) {
         const newId = createId(10)
         // res.setHeader('Cache-Control', 'private')
-        res.cookie('user', newId, { maxAge: 1000 * 3600 * 24 * 365 }) //cookie is valid for a year
+        res.cookie('user', newId, { maxAge: 1000 * 3600 * 24 * 365 }) // dcookie is valid for a year
         console.log('newId on ' + newId)
         let data = JSON.parse(fs.readFileSync('users'))
         data.push({ user: newId, points: 20 })
@@ -33,11 +33,25 @@ router.get('/', (req, res) => {
         fs.writeFileSync('users', JSON.stringify(data))
 
         res.json({
-            "value": "myvalue"
+            "points": 20
         })
         res.status(201).end
     } else {
         console.log('cookie already present')
+
+        const userId = req.cookies.user
+    let data = JSON.parse(fs.readFileSync('users'))
+    let index = -1
+    for (let i = 0; i < data.length; i++) {
+        if (data[i].user === userId) {
+            index = i
+            break
+        }
+    }
+
+        res.json({
+            "points": data[index].points
+        })
         res.status(200).end
     }
 })

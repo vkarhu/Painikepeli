@@ -19,9 +19,10 @@ class App extends Component {
       .then(response => response.json())
       .then(data => {
         this.setState({
-          count: data.count
+          count: data.count,
+          points: data.points
         })
-        console.log(data.value)
+        console.log(data)
       })
   }
 
