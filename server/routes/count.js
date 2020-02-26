@@ -34,7 +34,8 @@ router.get('/', (req, res) => {
         console.log(data)
         fs.writeFileSync('users', JSON.stringify(data))
         res.json({
-            "points": 20
+            'points': 20,
+            'reward': 0
         })
         res.status(201).end
     } else {
@@ -59,10 +60,13 @@ router.get('/', (req, res) => {
     }
 
         res.json({
-            "points": data[index].points
+            "points": data[index].points,
+            'reward': 0
         })
         res.status(200).end
     }
+    
+    
 })
 
 
@@ -70,6 +74,7 @@ router.get('/push', (req, res) => {
     const userId = req.cookies.user
     let data = JSON.parse(fs.readFileSync('users'))
     let index = -1
+    let reward = 0
     for (let i = 0; i < data.length; i++) {
         if (data[i].user === userId) {
             index = i
@@ -81,12 +86,15 @@ router.get('/push', (req, res) => {
         data[index].points--
         if (count % 500 === 0) {
             data[index].points = data[index].points + 250
+            reward = 250
         } else {
             if (count % 100 === 0) {
                 data[index].points = data[index].points + 40
+                reward = 40
             } else {
                 if (count % 10 === 0) {
                     data[index].points = data[index].points + 5
+                    reward = 5
                 }
             }
         }
@@ -98,7 +106,8 @@ router.get('/push', (req, res) => {
     res.json({
         'count': count,
         'points': data[index].points,
-        'toReward': toReward
+        'toReward': toReward,
+        'reward': reward
     })
     res.status(200).end
 
@@ -123,7 +132,8 @@ router.get('/reset', (req, res) => {
     }
     res.json({
         'count': count,
-        'points': data[index].points
+        'points': data[index].points,
+        'reward': 0
     })
     res.status(200).end
 })

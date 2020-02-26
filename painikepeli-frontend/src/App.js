@@ -8,7 +8,8 @@ class App extends Component {
     this.state = {
       count: 0,
       points: 0,
-      toReward: 0
+      toReward: 0,
+      reward:0
     }
     this.updateCount = this.updateCount.bind(this)
     this.resetScore = this.resetScore.bind(this)
@@ -33,7 +34,8 @@ class App extends Component {
         this.setState({
           count: data.count,
           points: data.points,
-          toReward: data.toReward
+          toReward: data.toReward,
+          reward: data.reward
         })
       })
   }
@@ -56,12 +58,15 @@ class App extends Component {
         <h1>
           Painikepeli
         </h1>
-        {this.state.points>0?<button onClick={this.updateCount}>push</button>:<button onClick={this.resetScore}>Out of points! Reset here</button>}
+        {this.state.points>0 ? <button onClick={this.updateCount}>push</button>:<button onClick={this.resetScore}>Out of points! Reset here</button>}
         <h2>
           You have {this.state.points} points
         </h2>
         <h2>
           Clicks to a reward {this.state.toReward}
+        </h2>
+        <h2>
+          {this.state.reward>0 ? <div>You won {this.state.reward} points!</div> : null }
         </h2>
         <h3>
           This site relies on cookies. Make sure cookies are turned on before playing!
