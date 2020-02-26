@@ -38,11 +38,15 @@ router.get('/', (req, res) => {
         })
         res.status(201).end
     } else {
-        
-        if (!data.includes(userId)) {
+        let foundUser = 0
+        for (i=0; i < data.length; i++) {
+           if  (data[i].user === userId){
+            foundUser++
+           }
+        }
+        if (foundUser===0) {
             data.push({ user: userId, points: 20 })
             fs.writeFileSync('users', JSON.stringify(data))
-            console.log("cookie found, no user in data")
         }
 
         
