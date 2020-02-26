@@ -18,29 +18,33 @@ const createId = length => {
 }
 
 router.get('/', (req, res) => {
-    let found = false
-    if (req.headers.cookie !== undefined) {
-        found = req.headers.cookie.includes('user=')
+    let foundCookie = false
+    const userId =  req.cookies.user
+    let data = JSON.parse(fs.readFileSync('users'))
+
+    if (userId !== undefined) {
+        foundCookie = req.headers.cookie.includes('user=')
     }
-    if (!found) {
+    if (!foundCookie) {
         const newId = createId(10)
         // res.setHeader('Cache-Control', 'private')
-        res.cookie('user', newId, { maxAge: 1000 * 3600 * 24 * 365 }) // dcookie is valid for a year
+        res.cookie('user', newId, { maxAge: 1000 * 3600 * 24 * 365 }) // cookie is valid for a year
         console.log('newId on ' + newId)
-        let data = JSON.parse(fs.readFileSync('users'))
         data.push({ user: newId, points: 20 })
         console.log(data)
         fs.writeFileSync('users', JSON.stringify(data))
-
         res.json({
             "points": 20
         })
         res.status(201).end
     } else {
-        console.log('cookie already present')
+        if (!data.includes(user)) {
+            data.push({ user: newId, points: 20 })
+            fs.writeFileSync('users', JSON.stringify(data))
+            console.log("cookie found, no user in data")
+        }
 
         const userId = req.cookies.user
-    let data = JSON.parse(fs.readFileSync('users'))
     let index = -1
     for (let i = 0; i < data.length; i++) {
         if (data[i].user === userId) {

@@ -7,14 +7,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  background-image: linear-gradient(rgb(23, 94, 94), slategrey);
+  background-image: linear-gradient(rgb(2, 73, 131), rgb(42, 102, 50));
   
   background-repeat: no-repeat;
   background-attachment: fixed;
  
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }
