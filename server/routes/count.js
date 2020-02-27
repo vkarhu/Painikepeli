@@ -19,7 +19,7 @@ const createId = length => {
 }
 
 router.get('/', (req, res) => { // Route for arriving at the home page
-    const userId = req.cookies.user 
+    const userId = req.cookies.user
     let data = JSON.parse(fs.readFileSync('users'))
 
     if (userId === undefined) {
@@ -73,7 +73,7 @@ router.get('/push', (req, res) => { // Route for pressing the button
     if (index !== -1) {
         count++
         data[index].points--
-        if (count % 500 === 0) { // The highest reward is given
+        if (count % 500 === 0) { // The highest possible reward is given
             data[index].points = data[index].points + 250
             reward = 250
         } else {
@@ -88,8 +88,6 @@ router.get('/push', (req, res) => { // Route for pressing the button
             }
         }
         fs.writeFileSync('users', JSON.stringify(data))
-    } else {
-        console.log('-1, no user')
     }
     const toReward = 10 - count % 10 // All rewards are divisible by 10
     res.json({
@@ -99,7 +97,6 @@ router.get('/push', (req, res) => { // Route for pressing the button
         'reward': reward
     })
     res.status(200).end
-
 })
 
 router.get('/reset', (req, res) => { // Route for resetting score to 20

@@ -1,13 +1,11 @@
 const express = require('express')
 const cookieParser = require('cookie-parser')
 
-// Creating the server
 const app = express()
 app.use(cookieParser())
 app.use("/count", require('./server/routes/count'))
 
-// Choose the port and start the server
-const PORT = process.env.PORT || 3005
+const PORT = process.env.PORT || 3005 // Choose port based on environment 
 app.listen(PORT, (err) => {
   if(err) { console.log(err) }
 })

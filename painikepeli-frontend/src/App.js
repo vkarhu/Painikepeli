@@ -57,12 +57,12 @@ class App extends Component {
         <h1>
           Painikepeli
         </h1> {/*Render the button if the player has points, otherwise render reset button */}
-        {this.state.points > 0 ? <button onClick={this.updateCount}>Push here</button> : <button onClick={this.resetScore}>Out of points! Click here to reset to 20 points</button>} 
+        {this.state.points > 0 ? <button onClick={this.updateCount}>Press here</button> : <button onClick={this.resetScore}>Out of points! Press here to reset to 20 points</button>}
         <h2>
           You have {this.state.points} points
         </h2>
-        <h2>
-          { ? divClicks to a reward {this.state.toReward} : null}
+        <h2> {/*Render the clicks required for a reward only after pressing*/}
+          {this.state.toReward > 0 ? <div>Presses to a reward {this.state.toReward}</div> : null}
         </h2>
         <h2> {/*Render message of win only when winning*/}
           {this.state.reward > 0 ? <div>You won {this.state.reward} points!</div> : null}
