@@ -24,5 +24,10 @@
   "bugs": {
     "url": "https://github.com/vkarhu/painikepeli/issues"
   },
-  "homepage": "https://github.com/vkarhu/painikepeli#readme"
+  "homepage": "https://github.com/vkarhu/painikepeli#readme",
+  "keywords": [
+    "JS",
+    "React",
+    "Express"
+  ]
 }

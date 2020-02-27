@@ -9,7 +9,7 @@ class App extends Component {
       count: 0,
       points: 0,
       toReward: 0,
-      reward:0
+      reward: 0
     }
     this.updateCount = this.updateCount.bind(this)
     this.resetScore = this.resetScore.bind(this)
@@ -23,7 +23,6 @@ class App extends Component {
           count: data.count,
           points: data.points
         })
-        console.log(data)
       })
   }
 
@@ -57,19 +56,19 @@ class App extends Component {
       <div>
         <h1>
           Painikepeli
-        </h1>
-        {this.state.points>0 ? <button onClick={this.updateCount}>push</button>:<button onClick={this.resetScore}>Out of points! Reset here</button>}
+        </h1> {/*Render the button if the player has points, otherwise render reset button */}
+        {this.state.points > 0 ? <button onClick={this.updateCount}>Push here</button> : <button onClick={this.resetScore}>Out of points! Click here to reset to 20 points</button>} 
         <h2>
           You have {this.state.points} points
         </h2>
         <h2>
-          Clicks to a reward {this.state.toReward}
+          { ? divClicks to a reward {this.state.toReward} : null}
         </h2>
-        <h2>
-          {this.state.reward>0 ? <div>You won {this.state.reward} points!</div> : null }
+        <h2> {/*Render message of win only when winning*/}
+          {this.state.reward > 0 ? <div>You won {this.state.reward} points!</div> : null}
         </h2>
         <h3>
-          This site relies on cookies. Make sure cookies are turned on before playing!
+          This site uses cookies to track your score. By using this site you agree to their use. Make sure cookies are turned on before playing!
         </h3>
       </div>
     )

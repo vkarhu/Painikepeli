@@ -1,8 +1,7 @@
 const express = require('express')
-const cors = require('cors')
 const cookieParser = require('cookie-parser')
 
-// Create the server
+// Creating the server
 const app = express()
 app.use(cookieParser())
 app.use("/count", require('./server/routes/count'))
@@ -11,7 +10,6 @@ app.use("/count", require('./server/routes/count'))
 const PORT = process.env.PORT || 3005
 app.listen(PORT, (err) => {
   if(err) { console.log(err) }
-  console.log(`Listening on port ${PORT}`)
 })
 
 const path = require('path')
