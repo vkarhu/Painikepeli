@@ -1,4 +1,4 @@
-#Painikepeli
+# Painikepeli
 This game is an online multiplayer game where points are lost and gained by clicking a button. This button increases a shared counter, and rewards are given to players who advance the counter to values that are divisible by 500, 100 and 10. These values give rewards of 100, 40 and 5 points respectively. Players start with 20 points and clicking the button costs a point. A player who runs out of points can reset themselves to 20 points. In addition, clicking the button reveals to thep layer how many clicks are required for the next reward at the current time.
 
 The game is available at https://my-painikepeli.herokuapp.com/
