@@ -13,5 +13,5 @@ The frontend has been done with React and utilizes conditional rendering. The ap
   - Open your preferred installation location with the Git terminal and input the following command
     - git clone https://github.com/vkarhu/painikepeli.git
   - Input npm install in both the root location and in /painikepeli-frontend to install required dependencies
-  - Now the game can be started locally by inputting the command 'npm start' to both of the location in the previous step
+  - Now the game can be started locally by inputting the command 'npm start' to both of the locations in the previous step
   - The game should automatically open. If not, navigate to http://localhost:3000/ with a web browser to view it
